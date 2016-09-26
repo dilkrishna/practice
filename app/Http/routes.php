@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/delete/{id}', 'HomeController@getDelete')
+->name('delete');
 
 Route::group(['middleware'=>'auth'],function(){
     Route::resource('post', 'PostController');

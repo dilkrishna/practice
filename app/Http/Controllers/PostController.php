@@ -80,10 +80,10 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-//     die('destroy');
+     die('destroy');
         $post =Post::findOrfail($id);
         $post->delete();
 
-        return redirect()->route('post.index');
+        return redirect()->route('post.index')->with('sucess', 'Data deleted successfully');
     }
 }
