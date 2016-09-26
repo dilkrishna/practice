@@ -93,10 +93,11 @@
                         <td>
                             <a href="{{ route('post.show',[$post->id]) }}" class=" btn btn-inverse glyphicon glyphicon-eye-open"></a>
                             <a href="javascript:void(0);" class=" edit btn btn-inverse glyphicon glyphicon-edit" onclick="edit('<?php echo $post['id']; ?>')" id="edit"></a>
-                            <a href="#" data-href="/delete/{{$post['id']}}"
-                               data-toggle="modal" title="delete" data-target="#confirm-delete"
-                               data-menu_title="{{ $post['title'] }}"
-                               class="btn btn-effect-ripple btn-xs btn-danger del-row"><i class="fa fa-times"></i></a>
+                            <a href="javascript:void(0);" class=" del-row btn btn-xs btn-danger fa fa-times" id="<?php echo $post['id']; ?>"></a>
+                            {{--<a href="#" data-href="/delete/{{$post['id']}}"--}}
+                               {{--data-toggle="modal" title="delete" data-target="#confirm-delete"--}}
+                               {{--data-menu_title="{{ $post['title'] }}"--}}
+                               {{--class="btn btn-effect-ripple btn-xs btn-danger del-row"><i class="fa fa-times"></i></a>--}}
                             {{--<input type="button" class=" edit btn btn-primary " value="Edit"/>--}}
 
                         </td>
@@ -131,7 +132,4 @@
             </div>
         </div>
     </div>
-    <script>
-
-    </script>
 @endsection
