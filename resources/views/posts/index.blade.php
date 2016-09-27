@@ -131,9 +131,11 @@
             </tr>
             </thead>
             <tbody>
+            @if(count($posts))
+                <?php $i = 1; ?>
                 @foreach($posts as $k=>$post)
                     <tr>
-                        <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" >{{ 1+$k }}</td>
+                        <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" ><?php echo $i++ ; ?></td>
                         <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" >{{ $post->title }}</td>
                         <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" >{{ substr($post->body, 0, 50)}}{{ strlen($post->body)>50 ? "............" :"" }}</td>
                         <td>{{ date( 'M j Y, A:h',strtotime($post->created_at)) }}</td>
@@ -144,14 +146,13 @@
                         </td>
                     </tr>
                 @endforeach
-                <tr>
-                    No Records Found
-                </tr>
+                @else
+                    <tr>
+                        No Records Found
+                    </tr>
+                @endif
             </tbody>
         </table>
-        <div class="text-center">
-          {{ $posts->links()}}
-        </div>
     </div>
     </div>
 @endsection

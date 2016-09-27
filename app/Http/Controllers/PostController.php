@@ -9,12 +9,17 @@ use App\Http\Requests;
 use App\Post;
 use Session;
 use Validator;
+use Auth;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('id','desc')->paginate(10);
+//        $posts =Post::Where('user_id',Auth::user()->id)->first();
+//        return $posts;
+        $posts = Post::select('title','body','id')->where('user_id',Auth::user()->id)->get();
+//        return $posts;
+//        $posts = Post::orderBy('created_at','desc')->paginate(10);
         return view('posts.index',['posts'=>$posts]);
     }
 
@@ -35,6 +40,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title  =  $request->title;
         $post->body   =  $request->body;
+        $post->user_id = Auth::user()->id;
 
         $post->save();
 
