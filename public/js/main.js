@@ -130,8 +130,38 @@ $(document).ready(function () {
                     $("#mydiv").load(location.href + " #mydiv");
                 });
             },
-            error: function(err) {
-                swal('Failed!', 'Error', 'error');
+            error: function(xhr, status, error) {
+                swal({
+                        title: "Error",
+                        text: "You've Error ",
+                        type: "error",
+                        confirmButtonText: "OK",
+                    },function () {
+                        var data = xhr.responseText;
+                        var jsonResponse = JSON.parse(data);
+
+                        var msg = [];
+                        $.each(jsonResponse, function(index, value) {
+                            msg.push('<li>' + value + '</li>');
+                        });
+                        $(".show-div").show();
+                        $("#errors1").html(msg);
+                    }
+                )},
+        });
+    });
+
+    $(".view").click(function() {
+        var id = $(this).attr('id');
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            url: '/post/' + id,
+            data: {id: id},
+            success: function (data) {
+                $('#title_text').html(data.title);
+                $('#body_text').html(data.body);
+                $('#view').modal('show');
             }
         });
     });
