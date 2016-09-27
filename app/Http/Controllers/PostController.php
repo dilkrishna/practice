@@ -49,21 +49,18 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('posts.edit',['post'=>$post]);
+        return $post;
     }
 
     public function update(Request $request,$id)
-    {   // validation
-        $validator = Validator::make($request->all(),[
+    {
+        // validation
+        $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
         ]);
-        $data = [ $id ,['errors'=> $validator->errors()]];
-
-        if($validator->fails()){
-            return redirect()->route('post.edit',compact('data'));
 //            return view('posts.edit', compact('data'));
-        }
+
         // insert into database
         $post = Post::find($id);
         $post->title  =  $request->input('title');
@@ -71,9 +68,9 @@ class PostController extends Controller
 
         $post->save();
 
-        Session::flash('success', 'The blog is successfully save !');
-
-        return redirect()->route('post.show',[$request->id]);
+//        Session::flash('success', 'The blog is successfully save !');
+//
+//        return redirect()->route('post.show',[$request->id]);
 
     }
 
@@ -82,6 +79,6 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
-        
+
     }
 }

@@ -5,7 +5,7 @@
             <h1> All the posts</h1>
             <input type="button" class="btn btn-primary btn-h1-margin pull-right create" value="Create" />
         </div>
-    <!-- Modal -->
+    <!-- Modal create -->
     <div id="create" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" style="width:677px;" >
             <!-- Modal content-->
@@ -46,26 +46,46 @@
             </div>
         </div>
     </div>
+    <!-- Modal delete -->
+    <div id="confirm-delete" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><span id="del_name"></span></h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this record?
+                </div>
+                <div class="modal-footer">
+
+                    <a class="btn btn-effect-ripple btn-danger">Delete</a>
+                    <button type="button" data-dismiss="modal" class="btn btn-effect-ripple btn-default">Cancel
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal edit -->
     <div id="edit" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" style="width:677px;" >
             <!-- Modal content-->
             <div class="modal-content" >
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <div class="panel-body none formData" id="editForm">
-                        <h2>Edit User</h2>
-                        <form class="form" id="form">
+                    <div class="panel-body">
+                        <form  action="" class="update form-horizontal" >
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" name="title" id="title"/>
+                                <input type="hidden" class="form-control" name="id" id="id"/>
+                                <label>Title</label>
+                                {{Form::text('title',null,array('id'=>'title', 'class' => 'form-control'))}}
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" name="body" id="body"/>
+                                <label>Body</label>
+                                {{Form::textarea('body',null,array('id'=>'body', 'class' => 'form-control '))}}
                             </div>
-                            <input type="hidden" class="form-control" name="id" id="idEdit"/>
-                            <a href="javascript:void(0);" class="btn btn-warning" onclick="$('#editForm').slideUp();">Cancel</a>
-                            <a href="javascript:void(0);" class="btn btn-success" onclick="userAction('edit')">Update User</a>
+                                {{ Form::submit('update', array('class'=>'btn btn-primary btn-sm'))}}
                         </form>
                     </div>
                 </div>
@@ -91,45 +111,17 @@
                         <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" >{{ substr($post->body, 0, 50)}}{{ strlen($post->body)>50 ? "............" :"" }}</td>
                         <td>{{ date( 'M j Y, A:h',strtotime($post->created_at)) }}</td>
                         <td>
-                            <a href="{{ route('post.show',[$post->id]) }}" class=" btn btn-inverse glyphicon glyphicon-eye-open"></a>
-                            <a href="javascript:void(0);" class=" edit btn btn-inverse glyphicon glyphicon-edit" onclick="edit('<?php echo $post['id']; ?>')" id="edit"></a>
-                            <a href="javascript:void(0);" class=" del-row btn btn-xs btn-danger fa fa-times" id="<?php echo $post['id']; ?>"></a>
-                            {{--<a href="#" data-href="/delete/{{$post['id']}}"--}}
-                               {{--data-toggle="modal" title="delete" data-target="#confirm-delete"--}}
-                               {{--data-menu_title="{{ $post['title'] }}"--}}
-                               {{--class="btn btn-effect-ripple btn-xs btn-danger del-row"><i class="fa fa-times"></i></a>--}}
-                            {{--<input type="button" class=" edit btn btn-primary " value="Edit"/>--}}
-
+                            <a href="{{ route('post.show',[$post->id]) }}" class=" btn btn-inverse glyphicon glyphicon-eye-open" title="View Blog"></a>
+                            <a href="javascript:void(0);" class=" edit btn btn-inverse glyphicon glyphicon-edit" id="<?php echo $post['id']; ?>" title="Edit Blog"></a>
+                            <a href="javascript:void(0);" class=" del-row btn btn-xs btn-danger fa fa-times" id="<?php echo $post['id']; ?>" title="Delete Blog"></a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-
-            <div id="confirm-delete" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title"><span id="del_name"></span></h4>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to delete this record?
-                        </div>
-                        <div class="modal-footer">
-
-                            <a class="btn btn-effect-ripple btn-danger">Delete</a>
-                            <button type="button" data-dismiss="modal" class="btn btn-effect-ripple btn-default">Cancel
-                            </button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center">
-              {{ $posts->links()}}
-            </div>
+        <div class="text-center">
+          {{ $posts->links()}}
+        </div>
         </div>
     </div>
 @endsection
