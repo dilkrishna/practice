@@ -155,6 +155,7 @@
         </table>
     </div>
     </div>
+    <script src="/js/main.js"></script>
     <script src="/js/datatable.js"></script>
     <script src="/js/dataTables.bootstrap4.min.js"></script>
     <script>
