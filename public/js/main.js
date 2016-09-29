@@ -29,7 +29,8 @@ $(document).ready(function () {
                 },
                 function(){
                     $("#create").modal('hide');
-                    $("#mydiv").load(location.href + " #mydiv");
+                    location.reload();
+                    /*$("#mydiv").load(location.href + " #mydiv"); */
                     $(".form")[0].reset();
                 }
             )},
@@ -127,7 +128,8 @@ $(document).ready(function () {
                     type: 'success'
                 }, function () {
                     $('#edit').modal('hide');
-                    $("#mydiv").load(location.href + " #mydiv");
+                    location.reload();
+                    /*$("#mydiv").load(location.href + " #mydiv");*/
                 });
             },
             error: function(xhr, status, error) {
