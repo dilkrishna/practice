@@ -56,3 +56,7 @@
 .modal-backdrop.in {
     opacity: .75;
 }
+
+#example_filter {
+    float: right;
+}

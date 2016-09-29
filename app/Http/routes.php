@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/search', 'HomeController@search');
 Route::get('/delete/{id}', 'HomeController@getDelete')
 ->name('delete');
 

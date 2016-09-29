@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="col-lg-12">
+        <div class="col-lg-12 ">
             <h1> All the posts</h1>
-            <input type="button" class="btn btn-primary btn-h1-margin pull-right create" value="Create" />
+                <input type="button" class="btn btn-primary btn-h1-margin pull-right create" value="Create" />
         </div>
     <!-- Modal create -->
     <div id="create" class="modal fade" role="dialog">
@@ -119,8 +119,8 @@
         </div>
     </div>
 
-    <div class="col-lg-12 " id="mydiv" >
-        <table class="table table-striped table-hover hover ">
+    <div class="col-lg-12 btn-h1-margin " id="mydiv" >
+        <table class="table table-striped table-hover hover " id="example">
             <thead>
             <tr>
                 <th>#</th>
@@ -155,4 +155,11 @@
         </table>
     </div>
     </div>
+    <script src="/js/datatable.js"></script>
+    <script src="/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
 @endsection
