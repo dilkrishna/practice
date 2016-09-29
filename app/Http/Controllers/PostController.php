@@ -17,7 +17,8 @@ class PostController extends Controller
     {
 //        $posts =Post::Where('user_id',Auth::user()->id)->first();
 //        return $posts;
-        $posts = Post::select('title','body','id')->where('user_id',Auth::user()->id)->get();
+        $posts = Post::select('title','body','id','created_at')->where('user_id',Auth::user()->id)
+            ->orderBy('created_at', 'desc')->get();
 //        return $posts;
 //        $posts = Post::orderBy('created_at','desc')->paginate(10);
         return view('posts.index',['posts'=>$posts]);

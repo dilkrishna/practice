@@ -111,7 +111,7 @@
                         </div>
                         <div>
                             <h2>Body:</h2>
-                            <p id="body_text"></p>
+                            <p class="modalstyle" id="body_text"></p>
                         </div>
                     </div>
                 </div>
@@ -140,8 +140,8 @@
                         <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" >{{ substr($post->body, 0, 50)}}{{ strlen($post->body)>50 ? "............" :"" }}</td>
                         <td>{{ date( 'M j Y, A:h',strtotime($post->created_at)) }}</td>
                         <td>
-                            <a href="javascript:void(0);" class="view btn btn-xs btn-inverse fa fa-eye" id="<?php echo $post['id']; ?>" title="View Blog" ></a>
-                            <a href="javascript:void(0);" class=" edit btn btn-xs btn-inverse fa fa-edit" id="<?php echo $post['id']; ?>" title="Edit Blog"></a>
+                            <a href="javascript:void(0);" class="view btn btn-xs btn-info fa fa-eye" id="<?php echo $post['id']; ?>" title="View Blog" ></a>
+                            <a href="javascript:void(0);" class=" edit btn btn-xs btn-success fa fa-edit" id="<?php echo $post['id']; ?>" title="Edit Blog"></a>
                             <a href="javascript:void(0);" class=" del-row btn btn-xs btn-danger fa fa-times" id="<?php echo $post['id']; ?>" title="Delete Blog"></a>
                         </td>
                     </tr>
