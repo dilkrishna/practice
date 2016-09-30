@@ -28,14 +28,4 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Post');
     }
-
-    public function scopeSearchByKeyword($query, $keyword)
-    {
-        if ($keyword!='') {
-            $query->where(function ($query) use ($keyword) {
-                $query->where("title", "LIKE","%$keyword%");
-            });
-        }
-        return $query;
-    }
 }

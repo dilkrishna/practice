@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Post;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -25,13 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function getDelete($id)
-    {
-        $post = Post::findOrFail($id);
-        $post->delete();
-        return redirect()->route('post.index')->with('sucess', 'Data deleted successfully');
+        $posts = Post::all();
+        return view('home')->with('posts',$posts);
     }
 }

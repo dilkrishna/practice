@@ -11,16 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/search', 'HomeController@search');
-Route::get('/delete/{id}', 'HomeController@getDelete')
-->name('delete');
+Route::controller('/show','GuestController');
+
+Route::get('/', 'HomeController@index');
 
 Route::group(['middleware'=>'auth'],function(){
     Route::resource('post', 'PostController');
