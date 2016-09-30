@@ -14,12 +14,10 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-
 Route::auth();
 
-Route::controller('/show','GuestController');
-
 Route::get('/', 'HomeController@index');
+Route::get('/show/{id}','HomeController@show');
 
 Route::group(['middleware'=>'auth'],function(){
     Route::resource('post', 'PostController');

@@ -26,7 +26,7 @@
                                         <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" ><?php echo $i++;?></td>
                                         <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" >{{ $post->title }}</td>
                                         <td class="trhover" onclick="location.href='{{ route('post.show',[$post->id]) }}'" >{{ substr($post->body, 0, 50)}}{{ strlen($post->body)>50 ? "............" :"" }}</td>
-                                        <td>{{ date( 'M j Y, A:h',strtotime($post->created_at)) }}</td>
+                                        <td>{{ date( 'M j, Y',strtotime($post->created_at)) }}</td>
                                         <td class="text-danger"><strong>{{$post->name}}</strong></td>
                                         <td>
                                             <a href="{{ url('/show',$post->id) }}" class="view btn btn-xs btn-info fa fa-eye" title="View Blog" ></a>
