@@ -57,6 +57,7 @@
                     @if(Auth::user())
                     <li><a href="{{ url('/post') }}">Post</a></li>
                     @endif
+                    @include('common.i18')
                 </ul>
 
                 <!-- Right Side Of Navbar -->

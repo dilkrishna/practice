@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="col-lg-12 ">
-            <h1> All the posts</h1>
+            <h1> {{trans('common.all_the_post')}}</h1>
                 <input type="button" class="btn btn-primary btn-h1-margin pull-right create" value="Create" />
         </div>
     <!-- Modal create -->
@@ -124,10 +124,10 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Title</th>
-                <th>Body</th>
-                <th>Created At</th>
-                <th>Action</th>
+                <th>{{trans('common.title')}}</th>
+                <th>{{trans('common.body')}}</th>
+                <th>{{trans('common.created_at')}}</th>
+                <th>{{trans('common.action')}}</th>
             </tr>
             </thead>
             <tbody>

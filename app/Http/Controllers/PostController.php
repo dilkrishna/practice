@@ -13,6 +13,18 @@ use Auth;
 
 class PostController extends Controller
 {
+
+    public function __construct(Request $request)
+    {
+        $lang = 'en';
+        if ($request->session()->has('i18')) {
+            $lang = $request->session()->get('i18');
+        }
+        $request->session()->set('i18', $lang);
+        app()->setLocale($lang);
+
+    }
+    
     public function index()
     {
 //        $posts =Post::Where('user_id',Auth::user()->id)->first();

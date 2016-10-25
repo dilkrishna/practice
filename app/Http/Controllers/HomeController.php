@@ -6,7 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
-
+use Illuminate\Session;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +24,27 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(Request $request)
+    {
+        $lang = 'en';
+        if ($request->session()->has('i18')) {
+            $lang = $request->session()->get('i18');
+        }
+        $request->session()->set('i18', $lang);
+        app()->setLocale($lang);
+
+    }
+
+    public function i18(Request $r)
+    {
+        $lang = $r->segment('2');
+        $dir = resource_path('/lang/' . $lang);
+        $i18 = file_exists($dir) && is_dir($dir) ? $lang : 'en';
+        $r->session()->set('i18', $i18);
+        return redirect()->back();
+    }
+
     public function index()
     {
         $posts = Post::all();
