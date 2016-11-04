@@ -2,11 +2,18 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading"></div>
-                    <div class="panel-body">
+    {{--<script type="text/javascript"> <!----}}
+        {{--var nc_width = 'responsive';--}}
+        {{--var nc_height = 565;--}}
+        {{--var nc_api_id = "8221x1g161"; //-->--}}
+    {{--</script>--}}
+    {{--<script type="text/javascript" src="http://www.ashesh.com.np/nepali-calendar/js/ncf.js"></script>--}}
+        <div style="width: 30%; float: left; margin-top: 30px; ">
+            <ins style="width:350px;height:420px;margin-left: 15px;" class="nepalipatro-wg" widget="monthsmall"/>
+            {{--<div id="ncwidgetlink">Powered by © <a href="http://www.ashesh.com.np/nepali-calendar/" id="nclink" title="Nepali calendar" target="_blank">nepali calendar</a></div >--}}
+        </div>
+            <div style="width: 65%; float: right;">
+                <div >
                         <h1> {{trans('common.all_the_post')}}</h1>
                     <table class="table table-striped table-hover hover " id="example">
                         <thead>
@@ -43,9 +50,8 @@
                     </table>
                 </div>
             </div>
-        </div>
     </div>
-</div>
+<script src="//nepalipatro.com.np/widget/js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/datatable.js"></script>
 <script src="/js/dataTables.bootstrap4.min.js"></script>
