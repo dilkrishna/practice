@@ -37,14 +37,7 @@ class AdminAuthController extends Controller
             return redirect('/admin/login')->with('error', $e->getMessage());
         }
     }
-    public function postLogout(Request $r)
-    {
-        $user = Admin::user();
-        if (!empty($user)) {
-            $r->session()->pull('admin');
-        }
-        return redirect('/admin/login');
-    }
+
     protected function startSession()
     {
         $session = request()->session();

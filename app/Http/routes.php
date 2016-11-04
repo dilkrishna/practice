@@ -18,6 +18,7 @@ Route::auth();
 
 Route::group(['middleware' => 'admin','namespace'=>'Admin','prefix' => 'admin'], function () {
     Route::controller('page', 'PageController');
+    Route::any('/logout', 'AdminLogoutController@logout');
 });
 
 Route::get('/', 'HomeController@index');
