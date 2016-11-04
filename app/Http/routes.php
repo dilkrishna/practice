@@ -16,6 +16,10 @@
 //});
 Route::auth();
 
+Route::group(['middleware' => 'admin','namespace'=>'Admin','prefix' => 'admin'], function () {
+    Route::controller('page', 'PageController');
+});
+
 Route::get('/', 'HomeController@index');
 Route::get('/show/{id}','HomeController@show');
 Route::get('/i18/{any}', 'HomeController@i18')->where('any', '(.*)');
@@ -23,4 +27,12 @@ Route::get('/i18/{any}', 'HomeController@i18')->where('any', '(.*)');
 
 Route::group(['middleware'=>'auth'],function(){
     Route::resource('post', 'PostController');
+});
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/', function() {
+        return redirect('admin/login');
+    });
+    Route::Controller('/login', 'AdminAuthController');
+//    Route::controller('page', 'PageController');
 });
