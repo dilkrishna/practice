@@ -16,7 +16,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('admin/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/document.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('/css/sweetalert.min.css') }}">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
@@ -46,8 +46,14 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/admin/page/list') }}">
-               Admin
+               Dashboard
             </a>
+            @if(Admin::user())
+                <a class="navbar-brand" href="{{ url('/admin/logout') }}" style="float: right">
+                    Logout
+                </a>
+               <p class="navbar-brand pull-right"> <strong>Welcome {{strtoupper(Admin::user()['first_name']." ".Admin::user()['last_name'])}}</strong></p>
+            @endif
         </div>
 
         {{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}

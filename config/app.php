@@ -153,6 +153,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\AdminProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
@@ -206,6 +207,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Admin' => App\Facades\Admin::class,
 
     ],
 

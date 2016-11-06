@@ -1,14 +1,13 @@
-<html>
-<title>
+@extends('layouts.admin.app')
 
-</title>
-<head>
-    <body>
-<a href="{{ url('/admin/logout') }}">
-    <i class="fa fa-power-off"></i> Log out
-</a>
-    </body>
-</head>
-
-Wel come to list page
-</html>
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Admin Login</div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
