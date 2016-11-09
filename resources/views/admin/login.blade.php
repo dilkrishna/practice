@@ -1,66 +1,59 @@
-@extends('layouts.admin.app')
+@include('common.template_start')
+        <!-- Login Header -->
+<div id="login-container">
+    <h1 class="h2 text-light text-center push-top-bottom animation-slideDown">
+        <img src="{{URL::to('/assets/logo/logo.png')}}"/><strong></strong>
+    </h1>
+    <!-- END Login Header -->
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Admin Login</div>
-                    <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/login') }}">
-                            {{ csrf_field() }}
+    <!-- Login Block -->
+    <div class="block animation-fadeInQuickInv">
+        <!-- Login Title -->
+        <div class="block-title">
+            <h2>Administrator Panel Login</h2>
+        </div>
+        <!-- END Login Title -->
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        @include('common.message')
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password">
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-sign-in"></i> Login
-                                    </button>
-
-                                    <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                <!-- Login Form -->
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/login') }}">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <input type="text" id="email" name="email" class="form-control" placeholder="Your email..">
                 </div>
             </div>
-        </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <input type="password" id="password" name="password" class="form-control"
+                           placeholder="Your password..">
+                </div>
+            </div>
+            <div class="form-group form-actions">
+                <div class="col-xs-8"></div>
+                <div class="col-xs-4 text-right">
+                    <button type="submit" class="btn btn-effect-ripple btn-sm btn-primary"><i class="fa fa-check"></i>
+                        Let's
+                        Go
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- END Login Form -->
     </div>
-@endsection
+    <!-- END Login Block -->
+</div>
+<!-- END Login Container -->
+
+@include('common.template_scripts')
+
+        <!-- Load and execute javascript code used only in this page -->
+<script src="{{URL::to('/assets/admin/js/pages/readyLogin.js')}}"></script>
+<script>$(function () {
+        ReadyLogin.init();
+    });</script>
+
+@include('common.template_end')
+
+

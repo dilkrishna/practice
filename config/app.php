@@ -209,6 +209,7 @@ return [
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Admin' => App\Facades\Admin::class,
 
+
     ],
 
 ];

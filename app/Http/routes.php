@@ -15,10 +15,11 @@
 //    return view('welcome');
 //});
 Route::auth();
+Route::get('/test', 'FacebookintegrationController@test');
 
 Route::group(['middleware' => 'admin','namespace'=>'Admin','prefix' => 'admin'], function () {
     Route::controller('page', 'PageController');
-    Route::any('/logout', 'AdminLogoutController@logout');
+    Route::any('/logout', 'AdminAuthController@logout');
 });
 
 Route::get('/', 'HomeController@index');
