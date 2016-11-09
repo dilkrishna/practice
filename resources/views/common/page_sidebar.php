@@ -3,7 +3,7 @@
         <?php if (Admin::user()) { ?>
         <a href="<?php echo url('/admin/page/list') ?>" class="sidebar-title">
             <?php } ?>
-            <img src="<?php echo url('/assets/logo/logo.png') ?>" height="40" width="50">
+            <img src="<?php echo url('/assets/logo/logo1.png') ?>" height="40" width="50">
             <span class="sidebar-nav-mini-hide"><strong><?php echo trans('bitxhost.site.title'); ?></strong></span>
 
         </a>

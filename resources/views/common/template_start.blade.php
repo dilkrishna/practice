@@ -13,7 +13,7 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
-    <link rel="shortcut icon" href="{{URL::to('/assets/logo/logo.png')}}">
+    <link rel="shortcut icon" href="{{URL::to('/assets/logo/logo1.png')}}">
     <link rel="apple-touch-icon" href="{{URL::to('/assets/admin/img/icon57.png')}}" sizes="57x57">
     <link rel="apple-touch-icon" href="{{URL::to('/assets/admin/img/icon72.png')}}" sizes="72x72">
     <link rel="apple-touch-icon" href="{{URL::to('/assets/admin/img/icon76.png')}}" sizes="76x76">

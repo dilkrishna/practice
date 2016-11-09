@@ -2,7 +2,7 @@
         <!-- Login Header -->
 <div id="login-container">
     <h1 class="h2 text-light text-center push-top-bottom animation-slideDown">
-        <img src="{{URL::to('/assets/logo/logo.png')}}"/><strong></strong>
+        <img src="<?php echo url('/assets/logo/logo1.png') ?>" height="80" width="100"><strong></strong>
     </h1>
     <!-- END Login Header -->
 
