@@ -1,7 +1,26 @@
 @extends('layouts.app')
+    <?php
+    if (!session_id()) {
+        session_start();
+    }
+    $fb = new Facebook\Facebook([
+            'app_id' => '271680366562240',
+            'app_secret' => '631616238aeefd27ff453e63ce45f81d',
+            'default_graph_version' => 'v2.8',
+    ]);
+
+    $helper = $fb->getRedirectLoginHelper();
+
+    $permissions = ['email']; // Optional permissions
+    $loginUrl = $helper->getLoginUrl('http://practice.org/test', $permissions);
+
+    ?> <div class="pull-right"><?php echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>'; ?></div>
 
 @section('content')
     <div class="container">
+        @if(!empty($facebook))
+        {{$facebook['name']}}
+        @endif
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">

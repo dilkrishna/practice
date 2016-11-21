@@ -6,7 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
-use Illuminate\Session;
+use Session;
 class HomeController extends Controller
 {
     /**
@@ -48,12 +48,14 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('home')->with('posts',$posts);
+        $facebook = Session::get('facebook');
+        return view('home',compact('posts','facebook'));
     }
 
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('show',compact('post'));
+        $facebook = Session::get('facebook');
+        return view('show',compact('post','facebook'));
     }
 }

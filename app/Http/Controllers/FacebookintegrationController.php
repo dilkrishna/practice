@@ -7,14 +7,35 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exceptions;
 use Facebook;
+use Session;
 
 class FacebookintegrationController extends Controller
 {
-    public function test()
+
+    public function test(Request $r)
     {
-        if (!session_id()) {
-            session_start();
-        }
+        $user = request()->all();
+        Session::put('facebook', $user);
+    }
+//    public function test(Request $request)
+//    {
+//        $name =$request->name;
+//        echo $name;
+//        $sessionId = $request->session()->put(['
+//        name'=> $name]);
+//
+//    }
+
+    public function logout(Request $r)
+    {
+        Session::pull('facebook');
+        return redirect('/');
+    }
+
+    public function tests()
+    {
+
+
         $fb = new Facebook\Facebook([
             'app_id' => '271680366562240',
             'app_secret' => '631616238aeefd27ff453e63ce45f81d',
@@ -41,17 +62,17 @@ class FacebookintegrationController extends Controller
 
         try {
             $accessToken = $helper->getAccessToken();
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+        } catch (Facebook\Exceptions\FacebookResponseException $e) {
             // When Graph returns an error
             echo 'Graph returned an error: ' . $e->getMessage();
             exit;
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
             // When validation fails or other local issues
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }
 
-        if (! isset($accessToken)) {
+        if (!isset($accessToken)) {
             if ($helper->getError()) {
                 header('HTTP/1.0 401 Unauthorized');
                 echo "Error: " . $helper->getError() . "\n";
@@ -83,7 +104,7 @@ class FacebookintegrationController extends Controller
 //$tokenMetadata->validateUserId('123');
         $tokenMetadata->validateExpiration();
 
-        if (! $accessToken->isLongLived()) {
+        if (!$accessToken->isLongLived()) {
             // Exchanges a short-lived access token for a long-lived one
             try {
                 $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
@@ -96,10 +117,10 @@ class FacebookintegrationController extends Controller
             var_dump($accessToken->getValue());
         }
 
-        $_SESSION['fb_access_token'] = (string) $accessToken;
+        $_SESSION['fb_access_token'] = (string)$accessToken;
 
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
-header('Location: https://example.com/members.php');
+        header('Location: https://example.com/members.php');
     }
 }

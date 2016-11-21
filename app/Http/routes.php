@@ -15,7 +15,8 @@
 //    return view('welcome');
 //});
 Route::auth();
-Route::get('/test', 'FacebookintegrationController@test');
+Route::post('/test', 'FacebookintegrationController@test');
+Route::any('/facebook/logout', 'FacebookintegrationController@logout');
 
 Route::group(['middleware' => 'admin','namespace'=>'Admin','prefix' => 'admin'], function () {
     Route::controller('page', 'PageController');
